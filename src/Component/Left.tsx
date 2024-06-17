@@ -5,12 +5,9 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
-type Props = {};
-
-const Left = (props: Props) => {
 
 
-
+const Left = () => {
 
   const [text, ] = useTypewriter({
     words: ["Frontend developer", "Fullstack developer"],
@@ -56,10 +53,7 @@ const Left = (props: Props) => {
         </div>
       </div>
 
-      <div
-        className="overlay fixed top-0 right-0 bottom-0 w-full h-full left-0 opacity-0 bg-slate-50
-        "
-      ></div>
+      
     </div>
   );
 };

@@ -3,14 +3,12 @@
 import Home from "./Screen/Home";
 
 
-type Props = {};
 
-const App = (props: Props) => {
+
+const App = () => {
   return (
    <div className="w-full">
-    {/* <HomeScreen/> */}
-    {/* <LoginScreen/> */}
-    {/* <Test/> */}
+   
     <Home/>
    </div>
   );

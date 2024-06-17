@@ -7,9 +7,9 @@ import Testimonial from "./Testimonial";
 import Contact from "./Contact";
 import Footer from "./Footer";
 
-type Props = {};
 
-const Right = (props: Props) => {
+
+const Right = () => {
   return (
    
       <div className=" lgl:p-7   ">

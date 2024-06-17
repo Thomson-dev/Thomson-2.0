@@ -1,4 +1,4 @@
-import React from "react";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaQuoteLeft } from "react-icons/fa";
@@ -6,9 +6,9 @@ import { FaQuoteLeft } from "react-icons/fa";
 // Import Swiper styles
 import "swiper/css";
 
-type Props = {};
 
-const Testimonial = (props: Props) => {
+
+const Testimonial = () => {
   return (
     <div className="lgl:px-8 px-5 py-6 mt-10">
       <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">

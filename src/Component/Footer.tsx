@@ -1,10 +1,10 @@
-import React from "react";
+
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-type Props = {};
 
-const Footer = (props: Props) => {
+
+const Footer = () => {
   return (
     <div className="lgl:px-8  flex  flex-col items-center space-y-6 bg-black justify-center text-white py-12 mt-6 w-full">
       <div className="w-[30%] ">

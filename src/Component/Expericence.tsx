@@ -1,6 +1,6 @@
 import { FaArrowRight } from "react-icons/fa";
 
-type Props = {};
+
 
 const experiences = [
   {
@@ -25,7 +25,7 @@ const experiences = [
       "Implemented robust data management practices, contributing to the overall accuracy and reliability of client account information.",
   },
 ];
-const Expericence = (props: Props) => {
+const Expericence = () => {
   return (
     <div className="lgl:px-8  px-5 py-6 mt-8 w-full">
       <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">

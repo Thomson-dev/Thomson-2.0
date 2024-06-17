@@ -1,8 +1,8 @@
-import React from "react";
 
-type Props = {};
 
-const About = (props: Props) => {
+
+
+const About = () => {
   return (
     <div className="lgl:px-8  px-5 w-full py-6 ">
       <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">

@@ -7,9 +7,9 @@ import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { useTypewriter } from "react-simple-typewriter";
 
-type Props = {};
 
-const Home = (props: Props) => {
+
+const Home = () => {
 
 
   const [text] = useTypewriter({
