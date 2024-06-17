@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import profile from "../assets/thomson.jpg";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { FaLinkedinIn } from "react-icons/fa6";
@@ -8,11 +8,11 @@ import { FaGithub } from "react-icons/fa";
 type Props = {};
 
 const Left = (props: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
 
 
 
-  const [text, helper] = useTypewriter({
+
+  const [text, ] = useTypewriter({
     words: ["Frontend developer", "Fullstack developer"],
     loop: true,
     delaySpeed: 2000,

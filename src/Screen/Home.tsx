@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import Left from "../Component/Left";
 import profile from "../assets/thomson.jpg";
 import Right from "../Component/Right";
@@ -10,9 +10,9 @@ import { useTypewriter } from "react-simple-typewriter";
 type Props = {};
 
 const Home = (props: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const [text, helper] = useTypewriter({
+
+  const [text] = useTypewriter({
     words: ["Frontend developer", "Fullstack developer"],
     loop: true,
     delaySpeed: 2000,
