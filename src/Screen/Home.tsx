@@ -6,6 +6,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { useTypewriter } from "react-simple-typewriter";
+import { Link } from "react-router-dom";
 
 
 
@@ -57,11 +58,11 @@ const Home = () => {
           </div>
 
           <div className="flex justify-center  gap-2 w-full items-center lgl:mt-10">
-            <button className="poppins-regular  border-r  py-2 text-[#646464] mt-4 w-[40%] text-base ">
+            <button className="poppins-regular  border-r  py-2  text-[#646464] mt-4 w-[40%] text-base ">
               Download CV
             </button>{" "}
-            <button className="poppins-regular text-base  text-center mt-4 text-[#646464] py-2 w-[40%] ">
-              Login
+            <button className="poppins-regular text-base   text-center mt-4 text-[#646464] py-2 w-[40%] ">
+            <Link to="/login">Login</Link>
             </button>
           </div>
         </div>

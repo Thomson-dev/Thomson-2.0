@@ -8,10 +8,10 @@ const Skills = () => {
       <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">
         Skills
       </h2>
-      <hr className="w-[8%] border-[1.4px]    border-green-500  " />
+      <hr className="lgl:w-[8%] w-[10%] border-[1.4px]    border-green-500  " />
 
-      <div className="container space-x-7 ">
-        <div className="w-full">
+      <div className="container flex  flex-col  ">
+        <div className="w-full  ">
           <div className="skill-box">
             <span className="title poppins-regular text-[#646464]  text-[1rem] ">HTML</span>
             <div className="skill-bar ">

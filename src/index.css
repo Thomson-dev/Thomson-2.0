@@ -43,7 +43,7 @@ color: black;
     max-width: 100%;
     width: 100%;
     background: #fff;
-    display: flex;
+    
    
   
     border-radius: 7px;
@@ -100,7 +100,7 @@ color: black;
     animation-delay: 0.2s;
 }
 .skill-per.nodejs{
-    width: 40%;
+    width: 60%;
     animation-delay: 0.3s;
 }
 .skill-per.reactjs{

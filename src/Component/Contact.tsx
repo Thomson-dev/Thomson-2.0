@@ -1,13 +1,13 @@
 function Contact() {
   return (
-    <div className="lgl:px-8  px-5 py-6 mt-6 w-full">
+    <div className="lgl:px-8  px-5 py-6 mt-10 w-full">
       <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">
         Contact Me
       </h2>
-      <hr className="w-[8%] border-[1.4px] mb-6   border-green-500  " />
+      <hr className="lgl:w-[8%] w-[10%] border-[1.4px] mb-6   border-green-500  " />
 
-      <div className="flex-col flex  space-y-3">
-        <div className="w-full flex-col items-center lgl:space-y-3 space-y-0 lgl:flex-row flex space-x-2">
+      <div className="flex-col flex space-y-3 ">
+        <div className="w-full flex-col items-center  space-y-3 lgl:space-y-0 lgl:flex-row flex space-x-2 ">
           <input
             type="text"
             className="border p-2 text-base poppins-regular  outline-none w-full lgl:w-[50%]"

@@ -8,7 +8,7 @@ type Props = {};
 const LoginScreen = (props: Props) => {
   return (
     <div className="bg-[#F2F2F2] h-screen flex justify-center items-center rounded ">
-      <div className="w-[95%] max-w-[555px] min-h-[600px] bg-white border shadow flex-col p-16">
+      <div className="w-[95%] max-w-[555px] min-h-[600px] bg-white border shadow flex-col p-8 lgl:p-16">
         <h1 className="text-left inter text-2xl font-bold text-[#292929] ">
           Back to your digital life
         </h1>

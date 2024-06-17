@@ -1,15 +1,12 @@
-
 import profile from "../assets/thomson.jpg";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-
-
+import { Link } from "react-router-dom";
 
 const Left = () => {
-
-  const [text, ] = useTypewriter({
+  const [text] = useTypewriter({
     words: ["Frontend developer", "Fullstack developer"],
     loop: true,
     delaySpeed: 2000,
@@ -48,12 +45,10 @@ const Left = () => {
             Download CV
           </button>{" "}
           <button className="poppins-regular text-base  text-center text-[#646464] py-2 w-[20%] ">
-            Login
+            <Link to="/login">Login</Link>
           </button>
         </div>
       </div>
-
-      
     </div>
   );
 };
