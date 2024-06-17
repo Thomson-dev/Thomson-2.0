@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* *{
+    border: 2px red solid;
+} */
+.averia-serif-libre-bold {
+    font-family: "Averia Serif Libre", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+.inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: 700; */
+    font-style: normal;
+   
+  }
+  .black{
+color: black;
+  }
+
+  .ibm-plex-sans-thin {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }  
+
+  .averia-serif-libre-semibold {
+    font-family: "Averia Serif Libre", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .container{
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    background: #fff;
+    display: flex;
+   
+  
+    border-radius: 7px;
+}
+
+.title-text {
+    text-align: center;
+    background-color: green;
+    color: #fff;
+   
+    border-radius: 50px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.container .skill-box {
+    width: 100%;
+    margin: 25px 0;
+}
+
+.skill-box .title{
+    display: block;
+    font-size: 16px;
+    
+   
+}
+
+.skill-box .skill-bar{
+    height: 6px;
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 6px;
+    background: rgba(0,0, 0, 0.1);
+}
+
+.skill-box .skill-per{
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 95%;
+    border-radius: 6px;
+   
+    animation: progress 0.4s ease-in-out forwards;
+    opacity: 0;
+}
+
+.skill-per.css {
+    width: 80%;
+    animation-delay: 0.1s;
+}
+
+.skill-per.javascript{
+    width: 60%;
+    animation-delay: 0.2s;
+}
+.skill-per.nodejs{
+    width: 40%;
+    animation-delay: 0.3s;
+}
+.skill-per.reactjs{
+    width: 70%;
+    animation-delay: 0.3s;
+}
+.skill-per.expressjs{
+    width: 75%;
+    animation-delay: 0.3s;
+}
+
+
+@keyframes progress {
+    0% {
+        width: 0;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.skill-per .tooltip{
+    position: absolute;
+    right: -14px;
+    top: -28px;
+    font-size: 9px;
+    font-weight: 500;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    /* background: crimson; */
+    z-index: 1;
+}
+
+.tooltip::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    height: 10px;
+    width: 10px;
+    z-index: -1;
+    /* background-color: crimson; */
+    transform: translateX(-50%) rotate(45deg);
+}
+
+
+
+
+
+
+
+
+
+/* styles.css */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px; /* Adjust width as needed */
+    background-color: #333;
+    color: white;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
