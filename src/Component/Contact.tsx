@@ -7,22 +7,22 @@ function Contact() {
       <hr className="lgl:w-[8%] w-[10%] border-[1.4px] mb-6   border-green-500  " />
 
       <div className="flex-col flex space-y-3 ">
-        <div className="w-full flex-col items-center  space-y-3 lgl:space-y-0 lgl:flex-row flex space-x-2 ">
+        <div className="w-full flex-col items-center  space-y-3 lgl:space-y-0 lgl:flex-row flex lgl:space-x-2  ">
           <input
             type="text"
-            className="border p-2 text-base poppins-regular  outline-none w-full lgl:w-[50%]"
+            className="border p-3 text-base poppins-regular  outline-none w-full lgl:w-[50%]"
             placeholder="Your Name"
           />
           <input
             type="text"
-            className="border  p-2 text-base poppins-regular outline-none w-full lgl:w-[50%]"
+            className="border  p-3 text-base poppins-regular outline-none w-full lgl:w-[50%]"
             placeholder="Your Email"
           />
         </div>
 
         <input
           type="text"
-          className="border outline-none py-2 p-5 text-base poppins-regular"
+          className="border outline-none p-3 text-base poppins-regular"
           placeholder="Subject"
         />
         <textarea
