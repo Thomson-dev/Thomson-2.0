@@ -1,8 +1,16 @@
-
-
-
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const About = () => {
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.userDetails
+  );
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(userInfo());
+  // }, [dispatch]);
+
   return (
     <div className="lgl:px-8  px-5 w-full py-6 ">
       <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">
@@ -11,20 +19,17 @@ const About = () => {
       <hr className="lgl:w-[8%] w-[10%] border-[1.4px]    border-green-500  " />
 
       <p className="py-6 poppins-regular text-[#646464]  text-base ">
-        Hello, I'm a passionate data scientist with a keen interest in building
-        machine learning algorithms, tracking and deploying models, data
-        analysis, statistical analysis, relational and non-relational databases,
-        and data visualization.
+        {user.about}
       </p>
 
       <div className="flex justify-between gap-2 flex-col lgl:flex-row ">
         <div className="space-y-4  ">
-          <div className="flex space-x-2 items-start">
+          <div className="flex space-x-2 items-center">
             <h6 className="text-xl text-green-500 averia-serif-libre-bold">
               Name:
             </h6>{" "}
             <p className="poppins-regular text-[#646464]  text-[1rem]">
-              Aare Adegboyega
+              {user.name}
             </p>
           </div>
           <div className="flex space-x-2  items-center">
@@ -32,7 +37,7 @@ const About = () => {
               Phone:
             </h6>{" "}
             <p className="poppins-regular text-[#646464]  text-[1rem]">
-              +234 9136 8712 92
+              {user.phone}
             </p>
           </div>
 
@@ -41,18 +46,19 @@ const About = () => {
               Address:
             </h6>{" "}
             <p className="poppins-regular text-[#646464]  text-[1rem]">
-              Lagos, Nigeria
+              {user.address}
             </p>
           </div>
         </div>
 
         <div className="space-y-4 ">
-          <div className="flex items-start space-x-2  ">
+          <div className="flex  items-center space-x-2  ">
             <h6 className="text-xl text-green-500 averia-serif-libre-bold">
               Experience
             </h6>{" "}
             <p className="poppins-regular text-[#646464]  text-[1rem]">
-              3+ Years
+              {" "}
+              +{user.experience}
             </p>
           </div>
           <div className="flex space-x-2  items-center">
@@ -60,7 +66,7 @@ const About = () => {
               Email:
             </h6>{" "}
             <p className="poppins-regular text-[#646464]  text-[1rem]">
-              adegboyegaaare@gmail.com
+              tomsinonyedikachi@gmail.com
             </p>
           </div>
 
@@ -69,7 +75,7 @@ const About = () => {
               Remote:
             </h6>{" "}
             <p className="poppins-regular text-[#646464]  text-[1rem]">
-              Available
+              {user.remote === true ? "Avaliable" : "Not Avaliable"}
             </p>
           </div>
         </div>

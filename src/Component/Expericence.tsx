@@ -39,7 +39,7 @@ const Expericence = () => {
             <span className="absolute top-2 l-0 ">
               <FaArrowRight className="text-green-500" />{" "}
             </span>
-            <hr className="w-[2px] h-48 bg-green-500 border-0 " />
+            <hr className="w-[2px] h-44 bg-green-500 border-0 " />
             <div className=" space-y-2 pl-3">
               <h1 className="averia-serif-libre-bold mt-2 lgl:mt-0 text-xl ">{item.title}</h1>
               <p className="poppins-regular text-[#646464] text-base ">

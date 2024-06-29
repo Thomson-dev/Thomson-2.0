@@ -14,7 +14,7 @@ const Right = () => {
    
       <div className=" lgl:p-7   ">
         <div className="rounded h-full border  bg-white">
-          <About />
+          <About  />
           <Skills />
           <Expericence />
           <Protfolio />

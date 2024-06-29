@@ -27,7 +27,7 @@ function Contact() {
         />
         <textarea
           name=""
-          className="border outline-none p-4"
+          className="border outline-none p-3"
           rows={6}
           id=""
         ></textarea>

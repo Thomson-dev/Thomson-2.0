@@ -3,9 +3,15 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Left = () => {
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.userDetails
+  );
+
   const [text] = useTypewriter({
     words: ["Frontend developer", "Fullstack developer"],
     loop: true,
@@ -24,7 +30,7 @@ const Left = () => {
           className="max-w-full xl:max-w-full  h-auto"
         />
         <h1 className="averia-serif-libre-bold mt-6 text-4xl text-center text-[#141414]   ">
-          Thomson
+        {user.name}
         </h1>
         <div className="text-center">
           <span className="averia-serif-libre-semibold  text-[#646464] text-2xl">

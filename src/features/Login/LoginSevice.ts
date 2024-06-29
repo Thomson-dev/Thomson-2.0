@@ -1,9 +1,11 @@
 import axios from "axios";
+import { User } from "./LoginSlice";
 
 const URL = "http://localhost:5000/api/user/login";
 
-const login = async (userData: string) => {
-  const response = await axios.post(URL , userData);
+const login = async (userData: User) => {
+  const response = await axios.post(URL, userData);
+  console.log(response);
 
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
@@ -20,5 +22,4 @@ const authService = {
   logout,
 };
 
-
-export default authService
+export default authService;

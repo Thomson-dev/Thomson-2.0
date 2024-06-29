@@ -4,11 +4,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import authService from "./LoginSevice";
 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("user") || "null");
 
-// Assuming you have a User type defined somewhere
 export interface User {
-  // Define your user properties here
+  password: string,
+  username: string,
 }
 
 export interface LoginState {
@@ -20,7 +20,7 @@ export interface LoginState {
 }
 
 const initialState: LoginState = {
-  user: user,
+  user: user ,
 
   isError: false,
   isSuccess: false,
@@ -32,7 +32,8 @@ export const login = createAsyncThunk("login", async (user: User, thunkAPI) => {
   try {
     const response = await authService.login(user);
     return response.data;
-  } catch (error) {
+  } catch (error:any) {
+    
     let message = error.message || error.toString();
 
     if (error.response && error.response.data && error.response.data.message) {
@@ -41,7 +42,13 @@ export const login = createAsyncThunk("login", async (user: User, thunkAPI) => {
 
     return thunkAPI.rejectWithValue(message);
   }
+
+
 });
+
+export const logout = createAsyncThunk('auth/logout', async () => {
+  await authService.logout()
+})
 
 export const LoginSlice = createSlice({
   name: "login",

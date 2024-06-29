@@ -1,23 +1,35 @@
-
 import Left from "../Component/Left";
 import profile from "../assets/thomson.jpg";
+import { useSelector, useDispatch } from "react-redux";
 import Right from "../Component/Right";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { useTypewriter } from "react-simple-typewriter";
 import { Link } from "react-router-dom";
-
-
+import { useEffect } from "react";
+import { userInfo } from "../features/Login/userDetails";
+import Loading from "../Component/Loading";
 
 const Home = () => {
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.userDetails
+  );
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(userInfo());
+  }, [dispatch]);
 
   const [text] = useTypewriter({
     words: ["Frontend developer", "Fullstack developer"],
     loop: true,
     delaySpeed: 2000,
   });
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="bg-[#F2F2F2]">
       <div className="lgl:max-w-[1200px] xs:hidden  lgl:block   mx-auto w-full  h-full">
@@ -29,6 +41,7 @@ const Home = () => {
           <Right />
         </div>
       </div>
+
       {/* Mobile */}
       <div className="w-[100%] mx-auto flex space-y-10 bg-white  max-w-[768px] lgl:hidden flex-col   ">
         <div className=" mx-6 mt-5 ">
@@ -39,7 +52,7 @@ const Home = () => {
           />
           <div className="">
             <h1 className="averia-serif-libre-bold mt-6 text-4xl text-center text-[#141414]   ">
-              Thomson
+              {user.name}
             </h1>
             <div className="text-center">
               <span className="averia-serif-libre-semibold  text-[#646464] text-2xl">
@@ -48,7 +61,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-
 
         <div className="   mb-10 flex flex-col space-y-2 justify-center   items-center  w-[100%] ">
           <div className="flex gap-5 justify-center items-center">
@@ -62,13 +74,13 @@ const Home = () => {
               Download CV
             </button>{" "}
             <button className="poppins-regular text-base   text-center mt-4 text-[#646464] py-2 w-[40%] ">
-            <Link to="/login">Login</Link>
+              <Link to="/login">Login</Link>
             </button>
           </div>
         </div>
 
         <div className="mx-auto w-[95%] ">
-          <Right />
+          <Right  />
         </div>
       </div>
     </div>

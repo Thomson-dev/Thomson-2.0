@@ -48,8 +48,8 @@ const LoginScreen = (props: Props) => {
     e.preventDefault();
 
     const userData = {
-      username,
-      password,
+      username: username.trim(),
+      password: password.trim(),
     };
     // console.log(userData);
     dispatch(login(userData));
