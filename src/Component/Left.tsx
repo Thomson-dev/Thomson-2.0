@@ -25,7 +25,7 @@ const Left = () => {
     >
       <div className=" mx-6 ">
         <img
-          src={profile}
+          src={user.image}
           alt=""
           className="max-w-full xl:max-w-full  h-auto"
         />

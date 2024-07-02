@@ -24,7 +24,7 @@ const initialState: userDetailsState = {
 export const userInfo = createAsyncThunk("userInfo", async (thunkAPI) => {
   try {
     const response = await userDetailsService.userDetails();
-    console.log(response);
+    // console.log(response);
     return response;
   } catch (error: any) {
     let message = error.message || error.toString();

@@ -7,11 +7,26 @@ import { logout, reset } from "../features/Login/LoginSlice";
 import Loading from "../Component/Loading";
 import { updateUserDetails, userInfo } from "../features/Login/userDetails";
 import { toast } from "react-toastify";
+import Tab from "../Component/Tab";
+import CreateExperience from "../Component/CreateExperience";
 
 const Dashboard = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.userDetails
   );
+
+  const [imageSrc, setImageSrc] = useState(
+    "https://elstar.themenate.net/img/avatars/thumb-3.jpg"
+  );
+
+  const [toggleState, setToggleState] = useState(1);
+
+  const toggleTab = (index: number) => {
+    setToggleState(index);
+  };
+
+ 
+
 
   const [formData, setFormData] = useState({
     name: user.name,
@@ -20,9 +35,10 @@ const Dashboard = () => {
     about: user.about,
     email: user.email,
     remote: user.remote,
+    experience: user.experience,
   });
 
-  const { name, phone, address, about, email, remote } = formData;
+  const { name, phone, address, about, email, remote, experience } = formData;
   // console.log(formData);
 
   const navigate = useNavigate();
@@ -33,6 +49,24 @@ const Dashboard = () => {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+  };
+  const handleProductImageUpload = (e) => {
+    const file = e.target.files[0];
+
+    TransformFileData(file);
+  };
+
+  const TransformFileData = (file) => {
+    const reader = new FileReader();
+
+    if (file) {
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setImageSrc(reader.result);
+      };
+    } else {
+      setImageSrc("");
+    }
   };
 
   useEffect(() => {
@@ -49,6 +83,8 @@ const Dashboard = () => {
       about: about.trim(),
       email: email.trim(),
       remote: remote,
+      experience: experience,
+      image: imageSrc,
     };
     dispatch(updateUserDetails(userData));
 
@@ -57,7 +93,7 @@ const Dashboard = () => {
     }
 
     if (user || isSuccess) {
-      toast.success("Userdetails updated successfully");
+      toast.success("User details updated successfully");
     }
   };
 
@@ -84,152 +120,237 @@ const Dashboard = () => {
 
   return (
     <div className="bg-[#1F2937]  ">
-      <div className=" px-3 py-10  max-w-[900px] w-[95%] mx-auto">
-        <div className="flex items-center justify-between">
-          <h3 className="text-white font-bold  text-xl">User info</h3>
+      <div className="flex  gap-2 ] mx-auto    max-w-[900px] w-[95%]">
+       
           <button
-            className="bg-red-500 py-2 w-24 t text-white"
-            onClick={onLogout}
+            onClick={() => toggleTab(1)}
+            className={`border border-green-500  poppins-regular hover:bg-green-500 lgl:text-base text-sm font-bold hover:text-[#212121] py-2 lgl:py-2 w-[50%]  text-green-500 ${
+              toggleState === 1 ? "bg-green-500 black" : ""
+            }`}
           >
-            Logout
+            <div className="flex items-center justify-center gap-x-2">
+              {/* <FaStar /> */}
+              Dashboard
+            </div>
           </button>
-        </div>
+          <button
+            onClick={() => toggleTab(2)}
+            className={`border border-green-500  poppins-regular lgl:text-base text-sm hover:text-[#212121] hover:bg-green-500 w-[50%] py-2 lgl:py-2 text-green-500 ${
+              toggleState === 2 ? "bg-green-500 black" : ""
+            }`}
+          >
+            <div className="flex items-center justify-center gap-x-2">
+              {/* <LiaLaptopCodeSolid className="text-2xl" /> */}
+              Experience
+            </div>
+          </button>
+       
+        <button
+          onClick={() => toggleTab(3)}
+          className={`border border-green-500  poppins-regular lgl:text-base text-sm hover:text-[#212121] hover:bg-green-500 w-[50%] py-2 lgl:py-2 text-green-500 ${
+            toggleState === 3 ? "bg-green-500 black" : ""
+          }`}
+        >
+          <div className="flex items-center gap-x-1 justify-center">
+            {/* <CiMobile1 className="text-xl" /> */}
+            Projects
+          </div>
+        </button>
+      </div>
 
-        <div className="flex md:flex-row flex-col">
-          <div className="0 w-[100%]">
-            <h6 className="text-white text-lg pt-5 font-semibold">
-              Basic Information
-            </h6>
-            <p className="text-white text-sm">
-              Section to config basic product information
-            </p>
+      <div className={`${toggleState === 1 ? "block" : "hidden"}`}>
+        <div className=" px-3 py-10  max-w-[900px] w-[95%] mx-auto">
+          <div className="flex items-center justify-between">
+            <h3 className="text-white font-bold  text-xl">User info</h3>
+            <button
+              className="bg-red-500 py-2 w-24 t text-white"
+              onClick={onLogout}
+            >
+              Logout
+            </button>
+          </div>
 
-            <form className="mt-6 flex-col flex space-y-4" onSubmit={onSubmit}>
-              <div className="flex flex-col w-full">
-                <label className="text-base text-slate-400 font-semibold">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={name}
-                  onChange={onChange}
-                  placeholder="Name"
-                  className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
-                />
-              </div>
-              <div className="flex flex-col w-full">
-                <label className="text-base text-slate-400 font-semibold">
-                  Phone number
-                </label>
-                <input
-                  type="text"
-                  value={phone}
-                  name="phone"
-                  onChange={onChange}
-                  placeholder="Phone number"
-                  className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
-                />
-              </div>
-              <div className="flex flex-col w-full">
-                <label className="text-base text-slate-400 font-semibold">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  value={address}
-                  name="address"
-                  onChange={onChange}
-                  placeholder=" Address"
-                  className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
-                />
-              </div>
+          <div className="flex md:flex-row flex-col">
+            <div className="0 w-[100%]">
+              <h6 className="text-white text-lg pt-5 font-semibold">
+                Basic Information
+              </h6>
+              <p className="text-white text-sm">
+                Section to config basic product information
+              </p>
 
-              <div className="flex flex-col w-full">
-                <label className="text-base text-slate-400 font-semibold">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  onChange={onChange}
-                  value={email}
-                  placeholder="Email"
-                  className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
-                />
-              </div>
+              <form
+                className="mt-6 flex-col flex space-y-4"
+                onSubmit={onSubmit}
+              >
+                <div className="flex flex-col w-full">
+                  <label className="text-base text-slate-400 font-semibold">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={onChange}
+                    placeholder="Name"
+                    className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
+                  />
+                </div>
+                <div className="flex flex-col w-full">
+                  <label className="text-base text-slate-400 font-semibold">
+                    Phone number
+                  </label>
+                  <input
+                    type="text"
+                    value={phone}
+                    name="phone"
+                    onChange={onChange}
+                    placeholder="Phone number"
+                    className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
+                  />
+                </div>
+                <div className="flex flex-col w-full">
+                  <label className="text-base text-slate-400 font-semibold">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    value={address}
+                    name="address"
+                    onChange={onChange}
+                    placeholder=" Address"
+                    className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
+                  />
+                </div>
 
-              <div className="w-full flex-col flex">
-                <label className="text-base text-slate-400 font-semibold">
-                  Experience
-                </label>
-                <textarea
-                  onChange={onChange}
-                  name="about"
-                  value={about}
-                  rows={6}
-                  className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
-                />
-              </div>
+                <div className="flex flex-col w-full">
+                  <label className="text-base text-slate-400 font-semibold">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    onChange={onChange}
+                    value={email}
+                    placeholder="Email"
+                    className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
+                  />
+                </div>
 
-              <div className=""></div>
+                <div className="w-full flex-col flex">
+                  <label className="text-base text-slate-400 font-semibold">
+                    About me
+                  </label>
+                  <textarea
+                    onChange={onChange}
+                    name="about"
+                    value={about}
+                    rows={6}
+                    className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
+                  />
+                </div>
 
-              <div className="">
-                <h6 className="text-white text-lg pt-5 font-semibold">
-                  Organizations
-                </h6>
-                <p className="text-white text-sm">
-                  Section to config the product attribute
-                </p>
+                <div className=""></div>
 
-                <div className="flex space-x-4 ">
-                  <div className="flex w-[50%]  flex-col">
-                    <label className="text-base text-slate-400 font-semibold">
-                      Remote
-                    </label>
-                    <select
-                      name="remote"
-                      onChange={onChange}
-                      value={remote}
-                      className="bg-[#1F2937]  py-2 px-2  text-white flex-1 rounded-lg mt-2 border outline-none"
-                      id=""
-                    >
-                      <option>true</option>
-                      <option>false</option>
-                    </select>
+                <div className="">
+                  <h6 className="text-white text-lg pt-5 font-semibold">
+                    Organizations
+                  </h6>
+                  <p className="text-white text-sm">
+                    Section to config the product attribute
+                  </p>
+
+                  <div className="flex space-x-4 ">
+                    <div className="flex w-[50%]  flex-col">
+                      <label className="text-base text-slate-400 font-semibold">
+                        Remote
+                      </label>
+                      <select
+                        name="remote"
+                        onChange={onChange}
+                        value={remote}
+                        className="bg-[#1F2937]  py-2 px-2  text-white flex-1 rounded-lg mt-2 border outline-none"
+                        id=""
+                      >
+                        <option>true</option>
+                        <option>false</option>
+                      </select>
+                    </div>
+
+                    <div className="flex w-[50%]  flex-col">
+                      <label className="text-base text-slate-400 font-semibold">
+                        Experience
+                      </label>
+                      <select
+                        name="experience"
+                        onChange={onChange}
+                        value={experience}
+                        className="bg-[#1F2937]  py-2 px-2  text-white flex-1 rounded-lg mt-2 border outline-none"
+                        id=""
+                      >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="mt-10">
+                    <h3 className="text-white font-semibold text-xl">
+                      Upload Profile
+                    </h3>
+                    <div className="mt-5">
+                      {/* Image preview */}
+                      {imageSrc && (
+                        <img
+                          src={imageSrc}
+                          alt="Preview"
+                          className="w-20 h-20 rounded-full"
+                        />
+                      )}
+
+                      {/* File input for image upload */}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="mt-2 w-24 md:w-full"
+                        onChange={handleProductImageUpload}
+                        style={{ marginBottom: "20px" }}
+                      />
+
+                      {/* Display message if no image is selected */}
+                      {!imageSrc && <p>Please select an image for upload.</p>}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className=" py-7 flex justify-end">
-                <button
-                  type="submit"
-                  className="bg-[#4F46E5] px-5 text-white font-semibold rounded py-2 flex items-center"
-                >
-                  <IoIosSave className="text-white" />
-                  Save
-                </button>
-              </div>
-            </form>
+                <div className=" py-7 flex justify-end">
+                  <button
+                    type="submit"
+                    className="bg-[#4F46E5] px-5 text-white font-semibold rounded py-2 flex items-center"
+                  >
+                    <IoIosSave className="text-white" />
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* <div className="footer  mt-6   w-full py-4 ">
-        <div className="flex  justify-end ">
-          <div className="flex space-x-4 px-6">
-            <button className="bg-[#374151] text-white font-bold w-20 py-2 rounded">
-              Discard
-            </button>
+      {/* //Expericence */}
 
-            <div className="flex items-center">
-              <button className="bg-[#4F46E5] px-5 text-white font-semibold rounded py-2 flex items-center">
-                <IoIosSave className="text-white" />
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> */}
+      <div className={`${toggleState === 2 ? "block" : "hidden"}`}>
+        <CreateExperience />
+      </div>
+
+      {/* Portfolio */}
+
+      <div className={`${toggleState === 3 ? "block" : "hidden"}`}>
+        <div className="h-screen"></div>
+      </div>
     </div>
   );
 };

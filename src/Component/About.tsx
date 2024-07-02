@@ -66,7 +66,7 @@ const About = () => {
               Email:
             </h6>{" "}
             <p className="poppins-regular text-[#646464]  text-[1rem]">
-              tomsinonyedikachi@gmail.com
+             {user.email}
             </p>
           </div>
 

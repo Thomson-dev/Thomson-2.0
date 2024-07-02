@@ -131,7 +131,7 @@ const Protfolio = () => {
         >
           <div className="flex items-center justify-center gap-x-2">
             <LiaLaptopCodeSolid className="text-2xl" />
-            Data Analysis
+            Web Design
           </div>
         </button>
        </div>
@@ -141,7 +141,7 @@ const Protfolio = () => {
         >
           <div className="flex items-center gap-x-1 justify-center">
             <CiMobile1 className="text-xl" />
-            Dashboards & Reports
+            Web App
           </div>
         </button>
       </div>

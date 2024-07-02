@@ -46,7 +46,7 @@ const Home = () => {
       <div className="w-[100%] mx-auto flex space-y-10 bg-white  max-w-[768px] lgl:hidden flex-col   ">
         <div className=" mx-6 mt-5 ">
           <img
-            src={profile}
+            src={user.image}
             alt=""
             className="max-w-full xl:max-w-full  h-auto"
           />
