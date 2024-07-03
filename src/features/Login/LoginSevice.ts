@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User } from "./LoginSlice";
 
-const URL = "http://localhost:5000/api/user/login";
+const URL = "https://thomsonserver.onrender.com/api/user/login";
 
 const login = async (userData: User) => {
   const response = await axios.post(URL, userData);

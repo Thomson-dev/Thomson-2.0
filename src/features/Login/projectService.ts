@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getproject = async () => {
-  const getProject = axios.get("http://localhost:5000/api/project");
+  const getProject = axios.get("https://thomsonserver.onrender.com/api/project");
 
   return getProject;
 };

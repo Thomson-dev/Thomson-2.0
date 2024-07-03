@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User } from "./LoginSlice";
 
-const URL = "http://localhost:5000/api/createDetail/667aa32d2f03eeca68681713";
+const URL = "https://thomsonserver.onrender.com/api/createDetail/667aa32d2f03eeca68681713";
 
 const user = JSON.parse(localStorage.getItem("user") || "null");
 
