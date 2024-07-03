@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const About = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
+  //  @ts-ignore
     (state) => state.userDetails
   );
   const dispatch = useDispatch();

@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import loginReducer from "../features/Login/LoginSlice";
+import projectReducer from "../features/Login/Project";
 import userDetailsReducer from "../features/Login/userDetails";
 import experienceReducer from "../features/Login/Experience";
 export const store = configureStore({
@@ -7,6 +8,7 @@ export const store = configureStore({
     login: loginReducer,
     userDetails: userDetailsReducer,
     experience: experienceReducer,
+    project: projectReducer,
   },
 });
 

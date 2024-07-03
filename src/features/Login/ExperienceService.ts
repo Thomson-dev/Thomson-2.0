@@ -7,7 +7,15 @@ const getexperience = async ()=>{
 
     return getExperience;
 }
+ //@ts-ignore
+const createExperience = async (experienceData) => {
 
-const experienceService = { getexperience }
+    const createExperience = axios.post("http://localhost:5000/api/experience",experienceData)
+
+    return createExperience;
+}
+
+
+const experienceService = { getexperience, createExperience }
 
 export default experienceService;

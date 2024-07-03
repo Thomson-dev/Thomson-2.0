@@ -13,11 +13,13 @@ import Loading from "../Component/Loading";
 
 const Home = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
+     //@ts-ignore
     (state) => state.userDetails
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
+     //@ts-ignore
     dispatch(userInfo());
   }, [dispatch]);
 

@@ -7,11 +7,13 @@ import { logout, reset } from "../features/Login/LoginSlice";
 import Loading from "../Component/Loading";
 import { updateUserDetails, userInfo } from "../features/Login/userDetails";
 import { toast } from "react-toastify";
-import Tab from "../Component/Tab";
+
 import CreateExperience from "../Component/CreateExperience";
+import Project from "../Component/Project";
 
 const Dashboard = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
+        //@ts-ignore
     (state) => state.userDetails
   );
 
@@ -39,7 +41,7 @@ const Dashboard = () => {
   });
 
   const { name, phone, address, about, email, remote, experience } = formData;
-  // console.log(formData);
+  console.log(formData);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -50,18 +52,20 @@ const Dashboard = () => {
       [e.target.name]: e.target.value,
     }));
   };
+    //@ts-ignore
   const handleProductImageUpload = (e) => {
     const file = e.target.files[0];
 
     TransformFileData(file);
   };
-
+     //@ts-ignore
   const TransformFileData = (file) => {
     const reader = new FileReader();
 
     if (file) {
       reader.readAsDataURL(file);
       reader.onloadend = () => {
+            //@ts-ignore
         setImageSrc(reader.result);
       };
     } else {
@@ -70,6 +74,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
+        //@ts-ignore
     dispatch(userInfo());
   }, [dispatch]);
 
@@ -86,12 +91,15 @@ const Dashboard = () => {
       experience: experience,
       image: imageSrc,
     };
+    // console.log(userData)
+      //@ts-ignore
     dispatch(updateUserDetails(userData));
 
     if (isError) {
       toast.error(message);
     }
 
+    
     if (user || isSuccess) {
       toast.success("User details updated successfully");
     }
@@ -110,6 +118,7 @@ const Dashboard = () => {
   // }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onLogout = () => {
+        //@ts-ignore
     dispatch(logout());
     dispatch(reset());
     navigate("/");
@@ -181,6 +190,7 @@ const Dashboard = () => {
 
               <form
                 className="mt-6 flex-col flex space-y-4"
+                    //@ts-ignore
                 onSubmit={onSubmit}
               >
                 <div className="flex flex-col w-full">
@@ -242,6 +252,7 @@ const Dashboard = () => {
                     About me
                   </label>
                   <textarea
+                     //@ts-ignore
                     onChange={onChange}
                     name="about"
                     value={about}
@@ -267,6 +278,7 @@ const Dashboard = () => {
                       </label>
                       <select
                         name="remote"
+                        //@ts-ignore
                         onChange={onChange}
                         value={remote}
                         className="bg-[#1F2937]  py-2 px-2  text-white flex-1 rounded-lg mt-2 border outline-none"
@@ -283,6 +295,7 @@ const Dashboard = () => {
                       </label>
                       <select
                         name="experience"
+                            //@ts-ignore
                         onChange={onChange}
                         value={experience}
                         className="bg-[#1F2937]  py-2 px-2  text-white flex-1 rounded-lg mt-2 border outline-none"
@@ -348,8 +361,8 @@ const Dashboard = () => {
 
       {/* Portfolio */}
 
-      <div className={`${toggleState === 3 ? "block" : "hidden"}`}>
-        <div className="h-screen"></div>
+      <div className={`${toggleState === 3 ? "block" : "hidden"} `}>
+      <Project/>
       </div>
     </div>
   );

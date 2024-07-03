@@ -1,9 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoIosSave } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
+import { createExperience } from "../features/Login/Experience";
+import { toast } from "react-toastify";
 
 const CreateExperience = () => {
-  
+  const dispatch = useDispatch();
+
+  const { experience, isLoading, isError, isSuccess, message } = useSelector(
+     //@ts-ignore
+    (state) => state.experience
+  );
+
+  const [formData, setFormData] = useState({
+    title: "",
+    company: "",
+    description: "",
+    startDate: "",
+    endDate: "",
+  });
+
+  const { title, company, description, startDate, endDate } = formData;
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    const experienceData = {
+      title,
+      company,
+      description,
+      startDate,
+      endDate,
+    };
+    //@ts-ignore
+    dispatch(createExperience(experienceData));
+    
+    if (isError) {
+      toast.error(message);
+    }
+
+    
+    if (isSuccess) {
+      toast.success("Created successfully");
+    }
+    if (isSuccess) {
+      toast.success(message);
+    }
+  };
 
   return (
     <div>
@@ -12,16 +62,21 @@ const CreateExperience = () => {
           Experience
         </h1>
 
-        <form action="" className="h-screen mt-5 flex flex-col space-y-4">
+        <form
+          className="h-screen mt-5 flex flex-col space-y-4"
+              //@ts-ignore
+          onSubmit={onSubmit}
+        >
           <div className="flex flex-col w-full">
             <label className="text-base text-slate-400 font-semibold">
-              Tittle
+              Title
             </label>
             <input
               type="text"
               name="title"
-             
-              placeholder="Name"
+              value={title}
+              onChange={onChange}
+              placeholder="Title"
               className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
             />
           </div>
@@ -32,10 +87,10 @@ const CreateExperience = () => {
             </label>
             <input
               type="text"
-              name="name"
-              // value={name}
-              // onChange={onChange}
-              placeholder="Name"
+              name="company"
+              value={company}
+              onChange={onChange}
+              placeholder="Company"
               className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
             />
           </div>
@@ -45,9 +100,10 @@ const CreateExperience = () => {
               Description
             </label>
             <textarea
-              // onChange={onChange}
-              // name="about"
-              // value={about}
+                //@ts-ignore
+              onChange={onChange}
+              name="description"
+              value={description}
               rows={6}
               className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
             />
@@ -61,6 +117,9 @@ const CreateExperience = () => {
               <input
                 className="bg-[#1F2937] px-2 w-full text-white py-2 rounded-lg mt-2 border outline-none"
                 type="text"
+                onChange={onChange}
+                name="startDate"
+                value={startDate}
               />
             </div>
 
@@ -70,6 +129,9 @@ const CreateExperience = () => {
               </label>
 
               <input
+                onChange={onChange}
+                name="endDate"
+                value={endDate}
                 className="bg-[#1F2937] w-full px-2 text-white py-2 rounded-lg mt-2 border outline-none"
                 type="text"
               />

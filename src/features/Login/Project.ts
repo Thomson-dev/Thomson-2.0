@@ -1,18 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import userDetailsService from "./userDetailsService";
 
-export interface userDetailsState {
-  user: [] | null;
+import projectService from "./projectService";
+
+export interface projectState {
+  project: [] | null;
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
   message: string;
 }
 
-const initialState: userDetailsState = {
-  user: [],
+const initialState: projectState = {
+  project: [],
 
   isError: false,
   isSuccess: false,
@@ -20,11 +21,11 @@ const initialState: userDetailsState = {
   message: "",
 };
 
-//GET USER DETAILS
-export const userInfo = createAsyncThunk("userInfo", async (thunkAPI) => {
+//GET USER PROJECTS
+export const getproject = createAsyncThunk("getproject", async (thunkAPI) => {
   try {
-    const response = await userDetailsService.userDetails();
-    // console.log(response);
+    const response = await projectService.getproject();
+    console.log(response);
     return response;
   } catch (error: any) {
     let message = error.message || error.toString();
@@ -32,18 +33,17 @@ export const userInfo = createAsyncThunk("userInfo", async (thunkAPI) => {
     if (error.response && error.response.data && error.response.data.message) {
       message = error.response.data.message;
     }
-     //@ts-ignore
+       //@ts-ignore
     return thunkAPI.rejectWithValue(message);
   }
 });
 
-//UPDATE USER DETAILS
-
-export const updateUserDetails = createAsyncThunk(
-  "updateUserDetails",
-  async (userData, thunkAPI) => {
+export const createproject = createAsyncThunk(
+  "createproject",
+  async (projectData, thunkAPI) => {
+    console.log(createproject);
     try {
-      const response = await userDetailsService.updateDetails(userData);
+      const response = await projectService.createProject(projectData);
       console.log(response);
       return response;
     } catch (error: any) {
@@ -62,8 +62,8 @@ export const updateUserDetails = createAsyncThunk(
   }
 );
 
-export const userDetailsSlice = createSlice({
-  name: "userinfo",
+export const projectSlice = createSlice({
+  name: "project",
   initialState,
   reducers: {
     reset: (state) => {
@@ -76,33 +76,36 @@ export const userDetailsSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(userInfo.pending, (state, action) => {
+      .addCase(getproject.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(userInfo.fulfilled, (state, action) => {
+      .addCase(getproject.fulfilled, (state, action) => {
         state.isSuccess = true;
         state.isLoading = false;
-        state.user = action.payload;
+        state.project = action.payload;
       })
-      .addCase(userInfo.rejected, (state, action) => {
+      .addCase(getproject.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
-         //@ts-ignore 
+         //@ts-ignore
         state.message = action.payload;
       })
-      .addCase(updateUserDetails.pending, (state, action) => {
+      .addCase(createproject.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(updateUserDetails.fulfilled, (state, action) => {
+      .addCase(createproject.fulfilled, (state, action) => {
         state.isSuccess = true;
         state.isLoading = false;
-      }).addCase(updateUserDetails.rejected, (state, action) => { 
+         //@ts-ignore
+        state.project = action.payload;
+      })
+      .addCase(createproject.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
-            //@ts-ignore
+         //@ts-ignore
         state.message = action.payload;
       });
   },
 });
 
-export default userDetailsSlice.reducer;
+export default projectSlice.reducer;

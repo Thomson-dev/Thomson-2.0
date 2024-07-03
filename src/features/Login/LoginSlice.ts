@@ -75,6 +75,7 @@ export const LoginSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
+           //@ts-ignore
         state.message = action.payload;
       });
   },

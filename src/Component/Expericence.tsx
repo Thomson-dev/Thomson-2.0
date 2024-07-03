@@ -28,6 +28,7 @@ import { ExpeienceInfo } from "../features/Login/Experience";
 // ];
 const Expericence = () => {
   const { experience, isLoading, isError, isSuccess, message } = useSelector(
+        //@ts-ignore
     (state) => state.experience
   );
 
@@ -36,6 +37,7 @@ const Expericence = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+        //@ts-ignore
     dispatch(ExpeienceInfo());
   }, [dispatch]);
 
@@ -45,8 +47,8 @@ const Expericence = () => {
         Expericence
       </h2>
       <hr className="lgl:w-[8%] w-[10%] border-[1.4px] mb-6   border-green-500  " />
-
-      {data &&
+      
+      {data &&    //@ts-ignore 
         data.map((item) => (
           <div className=" flex  flex-col  gap-y-7 ">
             <div className="flex gap-4  relative">

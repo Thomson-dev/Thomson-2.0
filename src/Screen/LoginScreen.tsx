@@ -22,6 +22,7 @@ const LoginScreen = (props: Props) => {
   const dispatch = useDispatch();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
+        //@ts-ignore
     (state) => state.login
   );
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +53,7 @@ const LoginScreen = (props: Props) => {
       password: password.trim(),
     };
     // console.log(userData);
+        //@ts-ignore
     dispatch(login(userData));
   };
 
@@ -62,7 +64,8 @@ const LoginScreen = (props: Props) => {
   return (
     <div className="bg-[#F2F2F2] h-screen flex justify-center items-center rounded ">
       <form
-        onSubmit={onSubmit}
+          //@ts-ignore
+        onSubmit={onSubmit}     
         className="w-[95%] max-w-[555px] min-h-[600px] bg-white border shadow flex-col p-8 lgl:p-16"
       >
         <h1 className="text-left inter text-2xl font-bold text-[#292929] ">

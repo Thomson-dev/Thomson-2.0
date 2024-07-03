@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const Left = () => {
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
+     //@ts-ignore
     (state) => state.userDetails
   );
 

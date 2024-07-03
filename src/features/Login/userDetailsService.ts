@@ -12,7 +12,7 @@ const userDetails = async () => {
 
   return response.data;
 };
-
+   //@ts-ignore
 const updateDetails = async (userData) => {
   const response = await axios.put(URL, userData, 
   );

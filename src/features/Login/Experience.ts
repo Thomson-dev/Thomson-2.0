@@ -33,12 +33,30 @@ export const ExpeienceInfo = createAsyncThunk("experience", async (thunkAPI) => 
     if (error.response && error.response.data && error.response.data.message) {
       message = error.response.data.message;
     }
-
+       //@ts-ignore
     return thunkAPI.rejectWithValue(message);
   }
 });
 
 
+
+export const 
+createExperience= createAsyncThunk("createExperience", async (experienceData, thunkAPI) => {
+  console.log(experienceData)
+  try {
+    const response = await experienceService.createExperience(experienceData)
+    console.log(response);
+    return response;
+  } catch (error: any) {
+    let message = error.message || error.toString();
+
+    if (error.response && error.response.data && error.response.data.message) {
+      message = error.response.data.message;
+    }
+
+    return thunkAPI.rejectWithValue(message);
+  }
+});
 
 
 
@@ -67,6 +85,22 @@ export const experienceSlice = createSlice({
       .addCase(ExpeienceInfo.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
+            //@ts-ignore
+        state.message = action.payload;
+      })
+      .addCase(createExperience.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(createExperience.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.isLoading = false;
+           //@ts-ignore
+        state.experience = action.payload;
+      })
+      .addCase(createExperience.rejected, (state, action) => {
+        state.isError = true;
+        state.isLoading = false;
+             //@ts-ignore
         state.message = action.payload;
       })
     
