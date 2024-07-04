@@ -4,7 +4,7 @@
 
 const Skills = () => {
   return (
-    <div className="lgl:px-10 px-5 mt-8 py-6">
+    <div className="lgl:px-10 px-2 mt-8 py-6">
       <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">
         Skills
       </h2>

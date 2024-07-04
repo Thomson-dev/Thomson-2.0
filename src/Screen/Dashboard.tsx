@@ -129,7 +129,7 @@ const Dashboard = () => {
 
   return (
     <div className="bg-[#1F2937]  ">
-      <div className="flex  gap-2 ] mx-auto    max-w-[900px] w-[95%]">
+      <div className="flex  gap-2  mx-auto py-4   max-w-[900px] w-[97%]">
        
           <button
             onClick={() => toggleTab(1)}

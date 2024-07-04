@@ -66,7 +66,7 @@ const LoginScreen = (props: Props) => {
       <form
           //@ts-ignore
         onSubmit={onSubmit}     
-        className="w-[95%] max-w-[555px] min-h-[600px] bg-white border shadow flex-col p-8 lgl:p-16"
+        className="w-[95%] max-w-[555px]  min-h-[600px] bg-white border shadow flex-col p-2 lgl:p-16"
       >
         <h1 className="text-left inter text-2xl font-bold text-[#292929] ">
           Back to your digital life
@@ -78,14 +78,14 @@ const LoginScreen = (props: Props) => {
         <div className="flex flex-col justify-center mt-9 gap-3">
           <input
             type="text"
-            className="w-[100%] py-2 p-4 inter text-bsse  border outline-blue-400 shadow-sm rounded-md "
+            className="w-[100%] py-3 p-4 inter text-bsse  border outline-blue-400 shadow-sm rounded-md "
             placeholder="username"
             name="username"
             value={username}
             onChange={onChange}
           />
           <input
-            className="w-[100%] py-2 p-4 border inter outline-blue-400 text-base shadow-sm rounded-md"
+            className="w-[100%] py-3 p-4 border inter outline-blue-400 text-base shadow-sm rounded-md"
             placeholder="password"
             name="password"
             onChange={onChange}

@@ -171,7 +171,7 @@ const Protfolio = () => {
   };
 
   return (
-    <div className="lgl:px-8 px-5 py-6 mt-8">
+    <div className="lgl:px-8 px-2 py-6 mt-8">
       <h2 className="text-3xl  font-bold py-2 averia-serif-libre-bold font-serif  ">
         Protfolio
       </h2>

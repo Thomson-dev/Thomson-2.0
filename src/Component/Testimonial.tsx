@@ -10,7 +10,7 @@ import "swiper/css";
 
 const Testimonial = () => {
   return (
-    <div className="lgl:px-8 px-5 py-6 mt-10">
+    <div className="lgl:px-8 px-2 py-6 mt-10">
       <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">
         Testimonial
       </h2>
@@ -26,7 +26,7 @@ const Testimonial = () => {
           <SwiperSlide>
             <div className="mt-6">
               <FaQuoteLeft className="text-5xl text-green-500" />
-              <p className="averia-serif-libre-semibold  max-w-full text-[#646464] mt-5  text-[1.5rem] leading-tight">
+              <p className="averia-serif-libre-semibold  max-w-full text-[#646464] mt-5  text-xl md:text-2xl leading-tight">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
                 nesciunt eveniet dolor aliquam ipsum eum blanditiis minus, a
               </p>
@@ -35,7 +35,7 @@ const Testimonial = () => {
           <SwiperSlide>
             <div className="mt-6">
               <FaQuoteLeft className="text-5xl text-green-500" />
-              <p className="averia-serif-libre-semibold  max-w-full text-[#646464] mt-5  text-[1.5rem] leading-tight">
+              <p className="averia-serif-libre-semibold  max-w-full text-[#646464] mt-5  text-xl md:text-2xl leading-tight">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
                 nesciunt eveniet dolor aliquam ipsum eum blanditiis minus, a
               </p>
@@ -44,7 +44,7 @@ const Testimonial = () => {
           <SwiperSlide>
             <div className="mt-6">
               <FaQuoteLeft className="text-5xl text-green-500" />
-              <p className="averia-serif-libre-semibold   text-[#646464] mt-5  text-[1.5rem] leading-tight">
+              <p className="averia-serif-libre-semibold   text-[#646464] mt-5  text-xl md:text-2xl leading-tight">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
                 nesciunt eveniet dolor aliquam ipsum eum blanditiis minus, a
               </p>
@@ -53,7 +53,7 @@ const Testimonial = () => {
           <SwiperSlide>
             <div className="mt-6">
               <FaQuoteLeft className="text-5xl text-green-500" />
-              <p className="averia-serif-libre-semibold  max-w-full text-[#646464] mt-5  text-[1.5rem] leading-tight">
+              <p className="averia-serif-libre-semibold  max-w-full text-[#646464] mt-5  text-xl md:text-2xl leading-tight">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
                 nesciunt eveniet dolor aliquam ipsum eum blanditiis minus, a
               </p>

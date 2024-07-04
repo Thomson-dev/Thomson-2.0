@@ -42,7 +42,7 @@ const Expericence = () => {
   }, [dispatch]);
 
   return (
-    <div className="lgl:px-8  px-5 py-6 mt-8 w-full">
+    <div className="lgl:px-8  px-3 py-6 mt-8 w-full">
       <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">
         Expericence
       </h2>
