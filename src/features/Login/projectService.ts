@@ -8,7 +8,7 @@ const getproject = async () => {
     //@ts-ignore
 const createProject = async (projectData) => {
   const createProject = axios.post(
-    "http://localhost:5000/api/project",
+    "https://thomsonserver.onrender.com/api/project",
     projectData
   );
 

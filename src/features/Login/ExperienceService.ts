@@ -10,7 +10,7 @@ const getexperience = async ()=>{
  //@ts-ignore
 const createExperience = async (experienceData) => {
 
-    const createExperience = axios.post("https://thomsonserver.onrender.com/experience",experienceData)
+    const createExperience = axios.post("https://thomsonserver.onrender.com/api/experience",experienceData)
 
     return createExperience;
 }
