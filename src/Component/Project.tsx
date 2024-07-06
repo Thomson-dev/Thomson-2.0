@@ -19,9 +19,11 @@ const Project = () => {
 
   const [formData, setFormData] = useState({
     title: "",
-    category: "",
+    category: "web design",
+    link: "",
     description: "",
   });
+  console.log(formData)
 
     //@ts-ignore
   const handleProductImageUpload = (e) => {
@@ -43,7 +45,7 @@ const Project = () => {
     }
   };
 
-  const { title, description, category } = formData;
+  const { title, description, category, link } = formData;
   
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,6 +60,7 @@ const Project = () => {
 
     const projectData = {
       name: title,
+      link,
       description,
       category,
       image: imageSrc,
@@ -65,12 +68,12 @@ const Project = () => {
         //@ts-ignore
     dispatch(createproject(projectData));
 
-    if (isError) {
-        toast.error(message);
-      }
+    // if (isError) {
+    //     toast.error(message);
+    //   }
   
       if (isSuccess) {
-        toast.success(message);
+        toast.success('Project created successfully');
       }
   };
   
@@ -103,8 +106,8 @@ const Project = () => {
             </label>
             <input
               type="text"
-              name="title"
-              value={title}
+              name="link"
+              value={link}
               onChange={onChange}
               className="bg-[#1F2937] px-2 text-white py-2 rounded-lg mt-2 border outline-none"
             />

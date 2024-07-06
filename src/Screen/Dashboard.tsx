@@ -95,9 +95,9 @@ const Dashboard = () => {
       //@ts-ignore
     dispatch(updateUserDetails(userData));
 
-    if (isError) {
-      toast.error(message);
-    }
+    // if (isError) {
+    //   toast.error(message);
+    // }
 
     
     if (user || isSuccess) {

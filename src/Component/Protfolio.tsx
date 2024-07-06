@@ -17,72 +17,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { getproject } from "../features/Login/Project";
 import Loading from "./Loading";
 
-type Project = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  category: string;
-
-  // Add more properties as needed
-};
-
-const projects: Project[] = [
-  {
-    id: 1,
-    name: "Project 1",
-    description: "This is project 1. It showcases my skills in React ",
-    image: project1,
-    category: "web design",
-  },
-
-  {
-    id: 2,
-    name: "Project 2",
-    description:
-      "This is project 1. It showcases my skills in React development,  ",
-    image: project2,
-    category: "web app",
-  },
-
-  {
-    id: 3,
-    name: "Project 2",
-    description:
-      "This is project 1. It showcases my skills in React development,  ",
-    image: project3,
-    category: "web design",
-  },
-  {
-    id: 4,
-    name: "Project 1",
-    description:
-      "This is project 1. It showcases my skills in React development, ",
-    image: project4,
-    category: "web app",
-  },
-];
-
 const Allproject = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-     //@ts-ignore
+    //@ts-ignore
     dispatch(getproject());
   }, [dispatch]);
   const { project, isLoading, isError, isSuccess, message } = useSelector(
-     //@ts-ignore
+    //@ts-ignore
     (state) => state.project
   );
-
 
   return (
     <div className="grid lgl:grid-cols-2 grid-cols-1 gap-10 items-center mt-5">
       {project.data &&
-       //@ts-ignore
+        //@ts-ignore
         project.data.map((item) => (
           <div className="">
-            <img src={item.image} className="max-w-[100%] h-auto" />
+            <a href={item.link}>
+              <img src={item.image} className="max-w-[100%] h-auto" />
+            </a>
             <div className="mt-5">
               <h1 className=" averia-serif-libre-bold mt-4  text-lg ">
                 {item.name}
@@ -99,30 +54,32 @@ const Dashboards = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-     //@ts-ignore
+    //@ts-ignore
     dispatch(getproject());
   }, [dispatch]);
 
   const { project, isLoading, isError, isSuccess, message } = useSelector(
-     //@ts-ignore
+    //@ts-ignore
     (state) => state.project
   );
   return (
     <div className="grid lgl:grid-cols-2 grid-cols-1 gap-7 items-center mt-5">
       {project.data &&
-        project.data  //@ts-ignore
+        project.data //@ts-ignore
           .filter((item) => item.category.trim() === "web design")
-           //@ts-ignore
+          //@ts-ignore
           .map((item) => (
             <div className="">
+            <a href={item.link}>
               <img src={item.image} className="max-w-[100%] h-auto" />
-              <div className="mt-5">
-                <h1 className=" averia-serif-libre-bold mt-4  text-lg ">
-                  {item.name}
-                </h1>
-                <p className="poppins-regular text-base">{item.description}</p>
-              </div>
+            </a>
+            <div className="mt-5">
+              <h1 className=" averia-serif-libre-bold mt-4  text-lg ">
+                {item.name}
+              </h1>
+              <p className="poppins-regular text-base">{item.description}</p>
             </div>
+          </div>
           ))}
     </div>
   );
@@ -132,12 +89,12 @@ const DataAnalysis = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-     //@ts-ignore
+    //@ts-ignore
     dispatch(getproject());
   }, [dispatch]);
 
   const { project, isLoading, isError, isSuccess, message } = useSelector(
-     //@ts-ignore
+    //@ts-ignore
     (state) => state.project
   );
 
@@ -145,19 +102,21 @@ const DataAnalysis = () => {
     <div className="grid lgl:grid-cols-2 grid-cols-1  gap-7 items-center mt-5">
       {project.data &&
         project.data
-         //@ts-ignore
+          //@ts-ignore
           .filter((item) => item.category.trim() === "web app")
-           //@ts-ignore
+          //@ts-ignore
           .map((item) => (
             <div className="">
+            <a href={item.link}>
               <img src={item.image} className="max-w-[100%] h-auto" />
-              <div className="mt-5">
-                <h1 className=" averia-serif-libre-bold mt-4  text-lg ">
-                  {item.name}
-                </h1>
-                <p className="poppins-regular text-base">{item.description}</p>
-              </div>
+            </a>
+            <div className="mt-5">
+              <h1 className=" averia-serif-libre-bold mt-4  text-lg ">
+                {item.name}
+              </h1>
+              <p className="poppins-regular text-base">{item.description}</p>
             </div>
+          </div>
           ))}
     </div>
   );

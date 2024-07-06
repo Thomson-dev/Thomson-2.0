@@ -50,9 +50,9 @@ const CreateExperience = () => {
     if (isSuccess) {
       toast.success("Created successfully");
     }
-    if (isSuccess) {
-      toast.success(message);
-    }
+    // if (isSuccess) {
+    //   toast.success(message);
+    // }
   };
 
   return (

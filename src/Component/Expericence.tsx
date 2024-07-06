@@ -33,6 +33,7 @@ const Expericence = () => {
   );
 
   const { data } = experience;
+  // console.log(data)
 
   const dispatch = useDispatch();
 
@@ -42,36 +43,37 @@ const Expericence = () => {
   }, [dispatch]);
 
   return (
-    <div className="lgl:px-8  px-3 py-6 mt-8 w-full">
-      <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">
-        Expericence
-      </h2>
-      <hr className="lgl:w-[8%] w-[10%] border-[1.4px] mb-6   border-green-500  " />
-      
-      {data &&    //@ts-ignore 
-        data.map((item) => (
-          <div className=" flex  flex-col  gap-y-7 ">
-            <div className="flex gap-4  relative">
-              <span className="absolute top-2 l-0 ">
-                <FaArrowRight className="text-green-500" />{" "}
-              </span>
-              <hr className="w-[2px] h-44 bg-green-500 border-0 " />
-              <div className=" space-y-2 pl-3">
-                <h1 className="averia-serif-libre-bold mt-2 lgl:mt-0 text-xl ">
-                  {item.title}
-                </h1>
-                <p className="poppins-regular text-[#646464] text-base ">
-                  {" "}
-                  {item.company} | {item.startDate} - {item.endDate}
-                </p>
-                <p className="poppins-regular text-[#646464] text-base">
-                  {item.description}
-                </p>
-              </div>
-            </div>
+<div className="lgl:px-8  px-3 py-6 mt-8 w-full">
+  <h2 className="text-3xl font-bold py-2 averia-serif-libre-bold font-serif  ">
+    Experience
+  </h2>
+  <hr className="lgl:w-[8%] w-[10%] border-[1.4px] mb-6   border-green-500  " />
+  
+  {Array.isArray(data) ? 
+    data.map((item, index) => (
+      <div key={index} className="flex  flex-col  gap-y-7 ">
+        <div className="flex gap-4  relative">
+          <span className="absolute top-2 l-0 ">
+            <FaArrowRight className="text-green-500" />{" "}
+          </span>
+          <hr className="w-[2px] h-44 bg-green-500 border-0 " />
+          <div className=" space-y-2 pl-3">
+            <h1 className="averia-serif-libre-bold mt-2 lgl:mt-0 text-xl ">
+              {item.title}
+            </h1>
+            <p className="poppins-regular text-[#646464] text-base ">
+              {item.company} | {item.startDate} - {item.endDate}
+            </p>
+            <p className="poppins-regular text-[#646464] text-base ">
+             {item.description}
+            </p>
           </div>
-        ))}
-    </div>
+        </div>
+      </div>
+    ))
+    : <p>Data is not available</p>
+  }
+</div>
   );
 };
 

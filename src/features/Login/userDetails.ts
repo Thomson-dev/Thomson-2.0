@@ -99,7 +99,7 @@ export const userDetailsSlice = createSlice({
       }).addCase(updateUserDetails.rejected, (state, action) => { 
         state.isError = true;
         state.isLoading = false;
-            //@ts-ignore
+             //@ts-ignore
         state.message = action.payload;
       });
   },
