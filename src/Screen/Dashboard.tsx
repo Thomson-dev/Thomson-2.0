@@ -18,7 +18,7 @@ const Dashboard = () => {
   );
 
   const [imageSrc, setImageSrc] = useState(
-    "https://elstar.themenate.net/img/avatars/thumb-3.jpg"
+    user.image || "https://elstar.themenate.net/img/avatars/thumb-3.jpg"
   );
 
   const [toggleState, setToggleState] = useState(1);
